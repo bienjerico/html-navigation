@@ -1,0 +1,164 @@
+body{
+	background-color: darkorange;
+}
+
+#main-header {
+	text-align: center;
+	background-color: #666666;
+	height: 65px;
+	font-size: 18px;
+}
+
+.main-header-nav{
+	padding: 0;
+}
+
+
+.nav-mainmenu {
+	height: 65px;
+	margin-left: 0;
+	margin-right: 0
+}
+.nav-mainmenu .nav-fluid .nav-content{
+	 display: none;
+}
+
+.nav-mainmenu .nav-hamburger
+{
+	color:white;
+}
+.nav-mainmenu .nav-user{
+	margin-right: 10px;
+	color:white;
+}
+.nav-mainmenu .nav-search{
+	margin-right: 10px;
+	color:white;
+}
+
+
+.nav-mainmenu .nav-logo{
+	padding-left: 15px;
+	padding-right: 0;
+	padding-top: 10px;
+	padding-bottom: 0;
+	text-align: left;
+}
+.nav-mainmenu .nav-fluid{
+	padding: 0;
+}
+.nav-mainmenu .nav-toggle{
+	padding-right: 15px;
+	padding-left:0;
+	padding-top: 22px;
+	padding-bottom:0;
+	text-align: right;
+}
+
+
+
+
+.nav-submenu{
+	display: none;		
+	position: absolute;
+	z-index: 2;
+	width: 100%;
+	background-color: rgba(255, 255, 255, .8);
+	opacity: .8;
+}
+.nav-submenu ul{
+	list-style: none;
+	padding: 0;
+	text-align: left;
+}
+.nav-submenu ul li a{
+	text-decoration: none;
+	color:black;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	display: block;
+	background-color: transparent;
+}
+.nav-submenu ul li ul{
+	display: none;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.nav-submenu-fuild{
+	padding:0;
+}
+
+
+
+
+
+
+
+@media screen  and (min-width: 768px) { 
+
+	.nav-mainmenu .nav-hamburger{
+		display: none;
+	}
+
+	.nav-mainmenu .nav-fluid {
+		text-align: center;
+		padding-top: 22px;
+	}
+
+	.nav-mainmenu .nav-fluid .nav-content{
+		 display: inline-block;
+	}
+
+	.nav-mainmenu  .nav-fluid ul {
+		list-style: none;
+		padding: 0;
+	}
+	.nav-mainmenu .nav-fluid ul li {
+		float:left;
+	}
+	.nav-mainmenu .nav-fluid ul li a {
+		text-decoration: none;
+		color: white;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.nav-mainmenu   .nav-fluid ul li ul {
+		display: none;
+	}
+
+
+
+	.nav-mainmenu-submenu {
+		display: none;
+		background-color: rgba(255, 255, 255, .8);
+		position: absolute;
+		opacity: .8;
+		height: 65px;
+		width: 100%;
+	}
+	.nav-mainmenu-submenu a.nav-first-name {
+		display: none;
+	}
+	.nav-mainmenu-submenu ul {
+		list-style: none;
+		padding: 0;
+	    display: inline-table;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.nav-mainmenu-submenu ul li {
+		float: left;
+		padding-top: 22px;
+	}
+	.nav-mainmenu-submenu ul li a {
+
+		text-decoration: none;
+		color:black;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+
+}
+

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>HTML Navigation</title>
+
+    <!-- Bootstrap -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header id="main-header">
+    <div class="container main-header-nav">
+      <div class="row nav-mainmenu">
+        <div class="col-xs-4 col-sm-2 nav-logo">
+            <img src="images/behringer-logo.png" alt="">
+        </div>
+        <div class="col-xs-4 col-sm-8 nav-fluid"></div>
+        <div class="col-xs-4 col-sm-2 nav-toggle">
+          <span class="glyphicon glyphicon-user nav-user" aria-hidden="true"></span>
+          <span class="glyphicon glyphicon-search nav-search" aria-hidden="true"></span>
+          <span class="glyphicon glyphicon-menu-hamburger nav-hamburger" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid nav-submenu-fuild">
+    <div class="nav-mainmenu-submenu hidden-xs col-sm-12"></div>
+    </div>
+
+    <div class="container">
+      <div class="row nav-submenu hidden-sm hidden-md hidden-lg">
+          <div class="col-xs-12">
+            <nav class="nav-content">
+              <ul>
+                <li class="nav-first-level"><a href="#" class="nav-first-name">Home<span class="glyphicon glyphicon-chevron-down visible-xs pull-right nav-icon" aria-hidden="true"></span></a>
+                    <ul>
+                      <li><a href="#">Home 1</a></li>
+                      <li><a href="#">Home 2</a></li>
+                      <li><a href="#">Home 3</a></li>
+                      <li><a href="#">Home 4</a></li>
+                      <li><a href="#">Home 5</a></li>
+                    </ul>
+                </li>
+                <li class="nav-first-level"><a href="#" class="nav-first-name">Profile<span class="glyphicon glyphicon-chevron-down visible-xs pull-right nav-icon" aria-hidden="true"></span></a>
+                    <ul>
+                      <li><a href="#">Profile 1</a></li>
+                      <li><a href="#">Profile 2</a></li>
+                      <li><a href="#">Profile 3</a></li>
+                      <li><a href="#">Profile 4</a></li>
+                      <li><a href="#">Profile 5</a></li>
+                    </ul>
+                </li>
+                <li class="nav-first-level"><a href="#gallery" class="nav-first-name">Gallery</a></li>
+                <li class="nav-first-level"><a href="#contacts" class="nav-first-name">Contacts</a></li>
+                <li class="nav-first-level"><a href="#about" class="nav-first-name">About</a></li>
+              </ul>
+            </nav>
+          </div>
+      </div>
+    </div>
+    </header>
+
+    <h1>Hello, world! Hello my good friends!</h1>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        navMobile();
+        navFullwidth();
+      })
+
+        // navigation mobile size
+        function navMobile(){
+
+          $('.nav-hamburger').unbind().click(function() {
+
+              var navSubmenu = $('.nav-submenu');
+                  navSubmenu.slideToggle();
+                  navSubmenu.children().children().children().each(function(){
+
+                  var navList = $(this).children();
+                      navList.unbind().click(function() {
+
+                          var navFirstLevel = $(this);
+                              navFirstLevel.siblings('.nav-first-level').removeClass('active');
+                              navFirstLevel.addClass('active');
+                              navFirstLevel.siblings('.nav-first-level').not('.active').find('ul').slideUp();
+
+                              if(navFirstLevel.find('ul').css('display')=='block'){
+                                navFirstLevel.parent().find('.active').removeClass('active');
+                                // change arrow up to down
+                                navFirstLevel.find('.glyphicon').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+                              }else{
+                                // change arrow down to up
+                                navFirstLevel.find('.glyphicon').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+                              }
+                              // change siblings arrow up to down
+                              navFirstLevel.siblings('.nav-first-level').not('.active').find('.nav-icon').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+
+                              navFirstLevel.find('ul').slideToggle();
+                })
+              })
+            })
+          
+        }
+
+        // navigation mobile list clone
+        function navCloneList(){
+          return $($('.nav-submenu')).clone().children().children().removeClass('col-xs-12');
+        }
+
+        // navigation full width
+        function navFullwidth(){
+          var responsiveFullwidth = false;
+          var navFluid = $('.nav-mainmenu .nav-fluid');
+
+            navFluid.append(this.navCloneList());
+            responsiveFullwidth = true;
+
+            // onresize
+            $(window).resize(function(){
+                if(!responsiveFullwidth){
+                  navFluid.append(this.navCloneList());
+                  responsiveFullwidth = true;
+                }
+            });
+
+
+             navFluid.children().children().each(function(){
+              var navList = $(this).children();
+                  navList.unbind().click(function() {
+
+                    var navFirstLevel = $(this);
+                    var navMainmenuSubmenu = $('.nav-mainmenu-submenu');
+                        navFirstLevel.siblings('.nav-first-level').removeClass('active');
+                        navFirstLevel.addClass('active');
+
+                        var firstContent = navMainmenuSubmenu.html();
+                            navMainmenuSubmenu.html(navFirstLevel.html());
+                        var secondContent = navMainmenuSubmenu.html();
+
+                            if(navFirstLevel.children().children().html()!=undefined){
+                              navMainmenuSubmenu.slideToggle();
+                              if(firstContent!=secondContent && firstContent!=''){
+                                 navMainmenuSubmenu.slideDown();
+                              }
+                            }else{
+                              navMainmenuSubmenu.html('&nbsp;');
+                              navMainmenuSubmenu.slideUp();
+                            }
+                });
+            })
+
+        }
+
+
+
+        
+
+
+
+    </script>
+  </body>
+</html>
