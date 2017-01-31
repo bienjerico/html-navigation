@@ -1,5 +1,5 @@
 body{
-	background-color: darkorange;
+	background-color: lightgray;
 }
 
 #main-header {
@@ -161,4 +161,39 @@ body{
 
 
 }
+
+
+
+.main-nav{
+	margin: 0;
+	padding: 0;
+	border:1px solid blue;
+}
+.main-nav .row {
+	border:1px solid red;
+}
+.main-nav .row .container{
+	border:1px solid green;
+}
+
+.main-nav .main-nav-list {
+	display: none;
+}
+
+.main-nav .main-nav-list ul {
+	display: none;
+}
+
+.main-nav .main-nav-list-sub {
+	display: none;
+}
+
+.main-nav .main-nav-list-sub ul {
+	display: none;
+}
+
+.main-nav a {
+	color: white;
+}
+
 
