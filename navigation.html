@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>HTML Navigation</title>
+
+    <!-- Bootstrap -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <header class="main-nav">
+      <div class="row">
+        <div class="container">
+          <div class="main-nav-logo">
+            <a href="#"><img src="images/tannoy-logo.png" alt=""></a>
+          </div>
+          <div class="main-nav-list">
+            <nav>
+              <ul class="nav-zero">
+                <li class="nav-zero-list">
+                    <a href="#">Home</a>
+                      <ul class="nav-one">
+                        <li class="nav-one-list"><a href="#">Home First 1</a></li>
+                        <li class="nav-one-list"><a href="#">Home First 2</a></li>
+                        <li class="nav-one-list"><a href="#">Home First 3</a></li>
+                        <li class="nav-one-list"><a href="#">Home First 4</a></li>
+                        <li class="nav-one-list"><a href="#">Home First 5</a></li>
+                      </ul>
+                </li>
+                <li class="nav-zero-list">
+                    <a href="#">Profile</a>
+                      <ul class="nav-one">
+                        <li class="nav-one-list"><a href="#">Profile First 1</a></li>
+                        <li class="nav-one-list"><a href="#">Profile First 2</a></li>
+                        <li class="nav-one-list"><a href="#">Profile First 3</a></li>
+                        <li class="nav-one-list"><a href="#">Profile First 4</a></li>
+                      </ul>
+                </li>
+                <li class="nav-zero-list"><a href="#">Gallery</a></li>
+                <li class="nav-zero-list"><a href="#">History</a></li>
+                <li class="nav-zero-list"><a href="#">Contacts</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="main-nav-list-sub">
+            <nav>
+              <ul class="nav-zero">
+                <li class="nav-zero-list">
+                    <a href="#">Home</a>
+                      <ul class="nav-one">
+                        <li class="nav-one-list"><a href="#">Home First 1</a></li>
+                        <li class="nav-one-list"><a href="#">Home First 2</a></li>
+                        <li class="nav-one-list"><a href="#">Home First 3</a></li>
+                        <li class="nav-one-list"><a href="#">Home First 4</a></li>
+                        <li class="nav-one-list"><a href="#">Home First 5</a></li>
+                      </ul>
+                </li>
+                <li class="nav-zero-list">
+                    <a href="#">Profile</a>
+                      <ul class="nav-one">
+                        <li class="nav-one-list"><a href="#">Profile First 1</a></li>
+                        <li class="nav-one-list"><a href="#">Profile First 2</a></li>
+                        <li class="nav-one-list"><a href="#">Profile First 3</a></li>
+                        <li class="nav-one-list"><a href="#">Profile First 4</a></li>
+                      </ul>
+                </li>
+                <li class="nav-zero-list"><a href="#">Gallery</a></li>
+                <li class="nav-zero-list"><a href="#">History</a></li>
+                <li class="nav-zero-list"><a href="#">Contacts</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="main-nav-icon">
+              <a href="#"><span class="glyphicon glyphicon-user nav-icon-user"></span></a>
+              <a href="#"><span class="glyphicon glyphicon-search nav-icon-search"></span></a>
+              <a href="#"><span class="glyphicon glyphicon-menu-hamburger nav-icon-hamburger"></span></a>
+          </div>
+         </div>
+      </div>
+    </header>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+    $(function(){
+
+      var navIconHamburger = $('.nav-icon-hamburger');
+
+        navIconHamburger.unbind().click(function(event) {
+              event.preventDefault();
+              navFunction('.main-nav-list');
+              navFunction('.main-nav-list-sub');
+
+        });
+    })
+
+    var navFunction = function(className){
+          var mainNavList = $(className);
+          var navZero = mainNavList.children().children();
+          
+              // show main nav
+              mainNavList.show();
+              // toggle nav zero
+              navZero.slideToggle();
+
+              navZero.children().each(function(){
+                var navZeroList = $(this);
+                    navZeroList.unbind().click(function(event) {
+                        event.preventDefault();
+
+                        // remove class 'active'
+                        navZeroList.siblings().children('a').removeClass('active');
+                        // add class 'active'
+                        navZeroList.children('a').addClass('active');
+                        // slide up other nav zero list
+                        navZeroList.siblings().children('.nav-one').slideUp();
+                        // toggle nav one
+                        navZeroList.children('.nav-one').slideToggle();
+
+                    });
+              })
+    }
+
+    </script>
+  </body>
+</html>
